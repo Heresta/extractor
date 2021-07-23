@@ -1,0 +1,10 @@
+{
+  "geonames": [
+     {"label": "Paris",
+      "code": "geonames:2988507"
+    },
+     {"label": "Embrun",
+      "code": "geonames:3020251"
+    }
+  ]
+}

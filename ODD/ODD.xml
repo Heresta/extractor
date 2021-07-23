@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xmlsch="http://www.w3.org/2001/XMLSchema-datatypes">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Encoding guidelines for XML-TEI files transformed</title>
+                <author xml:id="CJ">
+                    <name>Claire Jahan</name>
+                    <idno type="ORCID" n="0000-0001-7268-9706"/>
+                </author>
+            </titleStmt>
+            <publicationStmt>
+                <authority>E-ditiones</authority>
+            </publicationStmt>
+            <sourceDesc>
+                <p>It's a born digital edition. It follows the workf of Alexandre Bartz and Simon
+                    Gabay.</p>
+            </sourceDesc>
+        </fileDesc>
+        <revisionDesc>
+            <change when="2021-06-29"> Complete correction+schematron rules</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <!-- usable tags -->
+            <schemaSpec ident="general_ODD" start="TEI">
+                <moduleRef key="tei"/>
+                <moduleRef key="header"
+                    include="teiHeader fileDesc titleStmt publicationStmt availability licence sourceDesc extent 
+                    revisionDesc change interpretation editorialDecl encodingDesc idno"/>
+                <moduleRef key="core"
+                    include="teiCorpus title publisher p bibl address measure street date author editor lb ref pubPlace hi"/>
+                <moduleRef key="textstructure" include="TEI text body div"/>
+                <moduleRef key="figures" include="figure table"/>
+                <moduleRef key="namesdates" include="settlement"/>
+                <moduleRef key="msdescription" include="msDesc msIdentifier physDesc decoDesc institution decoNote"/>
+                <moduleRef key="transcr" include="facsimile surface surfaceGrp zone fw damage"/>
+                <moduleRef key="analysis" include="interpGrp interp"/>
+                <moduleRef key="linking"/>
+            </schemaSpec>
+
+            <elementSpec ident="TEI">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="teiheader" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="facsimile" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="text" minOccurs="1" maxOccurs="1"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="teiHeader" mode="change">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="fileDesc" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="encodingDesc" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="revisionDesc" minOccurs="1" maxOccurs="1"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="fileDesc" mode="change">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="titleStmt" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="extent" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="publicationStmt" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="sourceDesc" minOccurs="1" maxOccurs="1"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="titleStmt" mode="change">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="title" minOccurs="2" maxOccurs="2"/>
+                        <elementRef key="author" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="editor" minOccurs="1" maxOccurs="unbounded"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="title" mode="change">
+                <constraintSpec ident="titleType" scheme="schematron">
+                    <constraint>
+                        <sch:rule context="tei:titleStmt/tei:title">
+                            <sch:assert test="@type" role="error">Please add a @type attribute
+                                (value 'main' or 'sub').</sch:assert>
+                        </sch:rule>
+                    </constraint>
+                </constraintSpec>
+                <constraintSpec ident="editionType" scheme="schematron">
+                    <constraint>
+                        <sch:rule context="tei:titleStmt/tei:title/@type[contains(., 'sub')]">
+                            <sch:assert test="../contains(.,'E-Ditiones edition')" role="error">The
+                                content of the element "title" @type='sub' must be "E-Ditiones
+                                edition".</sch:assert>
+                        </sch:rule>
+                    </constraint>
+                </constraintSpec>
+                <attList>
+                    <attDef ident="type" mode="change" usage="rec">
+                        <valList mode="add" type="closed">
+                            <valItem ident="main"/>
+                            <valItem ident="sub"/>
+                        </valList>
+                    </attDef>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="author">
+                <attList>
+                    <attList>
+                        <attDef ident="ref" mode="change" usage="req"/>
+                    </attList>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="editor">
+                <attList>
+                    <attDef ident="ref" mode="change" usage="req"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="extent">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="measure" minOccurs="1" maxOccurs="2"/>
+                        <elementRef key="height" minOccurs="0" maxOccurs="1"/>
+                        <elementRef key="width" minOccurs="0" maxOccurs="1"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="measure" mode="change">
+                <attList>
+                    <attDef ident="n" mode="change" usage="req">
+                        <datatype>
+                            <dataRef key="teidata.numeric"/>
+                        </datatype>
+                    </attDef>
+                    <attDef ident="unit" mode="change" usage="req">
+                        <valList mode="add" type="closed">
+                            <valItem ident="images"/>
+                            <valItem ident="words"/>
+                        </valList>
+                    </attDef>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="height" mode="change">
+                <attList>
+                    <attDef ident="xml:id" mode="delete"/>
+                    <attDef ident="n" mode="change" usage="req">
+                        <datatype>
+                            <dataRef key="teidata.numeric"/>
+                        </datatype>
+                    </attDef>
+                    <attDef ident="rend" mode="delete"/>
+                    <attDef ident="unit" mode="add" usage="req">
+                        <valList mode="add" type="closed">
+                            <valItem ident="mm"/>
+                            <valItem ident="cm"/>
+                        </valList>
+                    </attDef>
+                    <attDef ident="type" mode="delete"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="width" mode="change">
+                <attList>
+                    <attDef ident="xml:id" mode="delete"/>
+                    <attDef ident="n" mode="change" usage="req">
+                        <datatype>
+                            <dataRef key="teidata.numeric"/>
+                        </datatype>
+                    </attDef>
+                    <attDef ident="rend" mode="delete"/>
+                    <attDef ident="unit" mode="add" usage="req">
+                        <valList mode="add" type="closed">
+                            <valItem ident="mm"/>
+                            <valItem ident="cm"/>
+                        </valList>
+                    </attDef>
+                    <attDef ident="type" mode="delete"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="publicationStmt" mode="change">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="publisher"/>
+                        <elementRef key="ref"/>
+                        <elementRef key="availability"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="publisher" mode="change">
+                <attList>
+                    <attDef ident="xml:id" mode="delete"/>
+                    <attDef ident="n" mode="delete"/>
+                    <attDef ident="ref" mode="change" usage="req"/>
+                    <attDef ident="rend" mode="delete"/>
+                    <attDef ident="ana" mode="delete"/>
+                    <attDef ident="rendition" mode="delete"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="ref" mode="change">
+                <attList>
+                    <attDef ident="target" mode="change" usage="rec">
+                        <!--<datatype>
+                            <dataRef name="token"/>
+                        </datatype>-->
+                    </attDef>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="availability" mode="change">
+                <attList>
+                    <attDef ident="xml:id" mode="delete"/>
+                    <attDef ident="rend" mode="delete"/>
+                    <attDef ident="status" mode="change" usage="rec"/>
+                    <attDef ident="n" mode="change" usage="rec"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="licence" mode="change">
+                <attList>
+                    <attDef ident="xml:id" mode="delete"/>
+                    <attDef ident="n" mode="delete"/>
+                    <attDef ident="notBefore" mode="delete"/>
+                    <attDef ident="rend" mode="delete"/>
+                    <attDef ident="target" mode="change" usage="rec"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="sourceDesc" mode="change">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="bibl"/>
+                        <elementRef key="msDesc"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="bibl" mode="change">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="ref" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="author" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="title" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="pubPlace" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="publisher" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="date" minOccurs="1" maxOccurs="1"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="pubPlace" mode="change">
+                <attList>
+                    <attDef ident="ref" mode="change" usage="req"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="date">
+                <attList>
+                    <attDef ident="when" mode="change" usage="rec"/>
+                    <attDef ident="rend" mode="delete"/>
+                    <attDef ident="corresp" mode="delete"/>
+                    <attDef ident="ana" mode="delete"/>
+                    <attDef ident="facs" mode="delete"/>
+                    <attDef ident="change" mode="delete"/>
+                    <attDef ident="cert" mode="delete"/>
+                    <attDef ident="resp" mode="delete"/>
+                    <attDef ident="source" mode="delete"/>
+                    <attDef ident="evidence" mode="delete"/>
+                    <attDef ident="instant" mode="delete"/>
+                    <attDef ident="unit" mode="delete"/>
+                    <attDef ident="quantity" mode="delete"/>
+                    <attDef ident="extent" mode="delete"/>
+                    <attDef ident="precision" mode="delete"/>
+                    <attDef ident="scope" mode="delete"/>
+                    <attDef ident="atLeast" mode="delete"/>
+                    <attDef ident="atMost" mode="delete"/>
+                    <attDef ident="min" mode="delete"/>
+                    <attDef ident="max" mode="delete"/>
+                    <attDef ident="confidence" mode="delete"/>
+                    <attDef ident="type" mode="delete"/>
+                    <attDef ident="subtype" mode="delete"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="msDesc" mode="change">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="msIdentifier" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="physDesc" minOccurs="1" maxOccurs="1"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="msIdentifier">
+                <content>
+                    <sequence preserveOrder="true">
+                        <elementRef key="settlement" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="institution" minOccurs="1" maxOccurs="1"/>
+                        <elementRef key="idno" minOccurs="1" maxOccurs="1"/>
+                    </sequence>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="physDesc">
+                <content>
+                    <elementRef key="decoDesc" minOccurs="1" maxOccurs="1"/>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="decoDesc">
+                <content>
+                    <elementRef key="decoNote" minOccurs="1" maxOccurs="1"/>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="decoNote">
+                <content>
+                    <elementRef key="p" minOccurs="1" maxOccurs="1"/>
+                </content>
+                <attList>
+                    <attDef ident="xml:id" mode="change" usage="req"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="encodingDesc">
+                <content>
+                    <elementRef key="editorialDecl" minOccurs="1" maxOccurs="1"/>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="editorialDecl">
+                <content>
+                    <elementRef key="interpretation" minOccurs="1" maxOccurs="1"/>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="interpretation">
+                <content>
+                    <elementRef key="p" minOccurs="1" maxOccurs="1"/>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="p">
+                <constraintSpec ident="pInterpretation" scheme="schematron">
+                    <constraint>
+                        <sch:rule context="tei:interpretation/tei:p">
+                            <sch:assert test="not(./interpGrp)" role="error">The tag "p" must have a
+                                tag "interGrp" for zones and another for lines according to
+                                SegmOnto.</sch:assert>
+                        </sch:rule>
+                    </constraint>
+                </constraintSpec>
+            </elementSpec>
+
+            <elementSpec ident="interGrp">
+                <content>
+                    <elementRef key="interp" minOccurs="1" maxOccurs="unbounded"/>
+                </content>
+                <constraintSpec ident="interpGrpType" scheme="schematron">
+                    <constraint>
+                        <sch:rule context="tei:interpretation//tei:interpGrp">
+                            <sch:assert
+                                test="not(@type[contains(., 'zone')]) or not(@type[contains(., 'line')])"
+                                role="error">'interpGrp' must have an attribute "type" with "zone"
+                                or "line" value.</sch:assert>
+                        </sch:rule>
+                    </constraint>
+                </constraintSpec>
+            </elementSpec>
+
+           
+
+            <elementSpec ident="revisionDesc">
+                <content>
+                    <elementRef key="change" minOccurs="1" maxOccurs="unbounded"/>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="change">
+                <attList>
+                    <attDef ident="who" mode="change" usage="req"/>
+                    <attDef ident="when" mode="change" usage="req"/>
+                    <attDef ident="ref" mode="change" usage="req"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="facsimile">
+                <content>
+                    <elementRef key="surfaceGrp" maxOccurs="unbounded" minOccurs="1"/>
+                </content>
+                <attList>
+                    <attDef ident="xml:id" mode="change" usage="req"/>
+                    <attDef ident="source" mode="change" usage="req"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="surfaceGrp">
+                <content>
+                    <elementRef key="surface" minOccurs="1" maxOccurs="unbounded"/>
+                </content>
+                <attList>
+                    <attDef ident="xml:id" mode="change" usage="req"/>
+                    <attDef ident="source" mode="change" usage="req"/>
+                    <attDef ident="type" mode="change" usage="req">
+                        <valList mode="add" type="closed">
+                            <valItem ident="page"/>
+                        </valList>
+                    </attDef>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="surface">
+                <content>
+                    <elementRef key="zone" minOccurs="0" maxOccurs="unbounded"/>
+                </content>
+                <attList>
+                    <attDef ident="xml:id" mode="change" usage="req"/>
+                    <attDef ident="source" mode="change" usage="req"/>
+                    <attDef ident="corresp" mode="change" usage="req">
+                        <valList mode="add" type="closed">
+                            <valItem ident="#BT1">
+                                <gloss>Block text "Title"</gloss>
+                            </valItem>
+                            <valItem ident="#BT2">
+                                <gloss>Block text "Main"</gloss>
+                            </valItem>
+                            <valItem ident="#BT3">
+                                <gloss>Block text "Damage"</gloss>
+                            </valItem>
+                            <valItem ident="#BT4">
+                                <gloss>Block text "Decoration"</gloss>
+                            </valItem>
+                            <valItem ident="#BT5">
+                                <gloss>Block text "DropCapital"</gloss>
+                            </valItem>
+                            <valItem ident="#BT6">
+                                <gloss>Block text "Figure"</gloss>
+                            </valItem>
+                            <valItem ident="#BT7">
+                                <gloss>Block text "Margin"</gloss>
+                            </valItem>
+                            <valItem ident="#BT8">
+                                <gloss>Block text "Numbering"</gloss>
+                            </valItem>
+                            <valItem ident="#BT9">
+                                <gloss>Block text "MusicNotation"</gloss>
+                            </valItem>
+                            <valItem ident="#BT10">
+                                <gloss>Block text "RunningTitle"</gloss>
+                            </valItem>
+                            <valItem ident="#BT11">
+                                <gloss>Block text "Seal"</gloss>
+                            </valItem>
+                            <valItem ident="#BT12">
+                                <gloss>Block text "Signatures"</gloss>
+                            </valItem>
+                            <valItem ident="#BT13">
+                                <gloss>Block text "Stamp"</gloss>
+                            </valItem>
+                            <valItem ident="#BT14">
+                                <gloss>Block text "Table"</gloss>
+                            </valItem>
+                        </valList>
+                    </attDef>
+                    <attDef ident="ana" mode="change" usage="rec"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="zone">
+      
+                <content>
+                    <elementRef key="zone" minOccurs="1" maxOccurs="1"/>
+                </content>
+                <attList>
+                    <attDef ident="xml:id" mode="change" usage="req"/>
+                    <attDef ident="source" mode="change" usage="req"/>
+                    <attDef ident="corresp" mode="change" usage="req">
+                        <valList mode="add" type="closed">
+                            <valItem ident="#LT1">
+                                <gloss>Line text "Default"</gloss>
+                            </valItem>
+                            <valItem ident="#LT2">
+                                <gloss>Line text "DropCapitalLine"</gloss>
+                            </valItem>
+                            <valItem ident="#LT3">
+                                <gloss>Line text "Interlinear"</gloss>
+                            </valItem>
+                            <valItem ident="#LT4">
+                                <gloss>Line text "MusicLine"</gloss>
+                            </valItem>
+                            <valItem ident="#LT5">
+                                <gloss>Line text "Rubric"</gloss>
+                            </valItem>
+                        </valList>
+                    </attDef>
+                    <attDef ident="points" mode="change" usage="req"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="text">
+                <content>
+                    <elementRef key="body" minOccurs="1" maxOccurs="1"/>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="body">
+                <content>
+                    <elementRef key="div" minOccurs="1" maxOccurs="unbounded"/>
+                </content>
+            </elementSpec>
+
+            <elementSpec ident="div">
+                <content>
+                    <elementRef key="figure" minOccurs="0" maxOccurs="unbounded"/>
+                    <elementRef key="p" minOccurs="0" maxOccurs="unbounded"/>
+                    <elementRef key="fw" minOccurs="0" maxOccurs="unbounded"/>
+                </content>
+                <attList>
+                    <attDef ident="n" mode="change" usage="req"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="figure">
+                <attList>
+                    <attDef ident="facs" mode="change" usage="req"/>
+                    <attDef ident="hand" mode="change" usage="req"/>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="p">
+                <content>
+                    <elementRef key="lb" minOccurs="1" maxOccurs="unbounded"/>
+                </content>
+                <attList>
+                    <attDef ident="facs" mode="change" usage="req"/>
+                    <attDef ident="type" mode="add" usage="req">
+                        <valList mode="add" type="closed">
+                            <valItem ident="BT1">
+                                <gloss>Block text "Title"</gloss>
+                            </valItem>
+                            <valItem ident="BT2">
+                                <gloss>Block text "Main"</gloss>
+                            </valItem>
+                            <valItem ident="BT3">
+                                <gloss>Block text "Damage"</gloss>
+                            </valItem>
+                            <valItem ident="BT4">
+                                <gloss>Block text "Decoration"</gloss>
+                            </valItem>
+                            <valItem ident="BT5">
+                                <gloss>Block text "DropCapital"</gloss>
+                            </valItem>
+                            <valItem ident="BT6">
+                                <gloss>Block text "Figure"</gloss>
+                            </valItem>
+                            <valItem ident="BT7">
+                                <gloss>Block text "Margin"</gloss>
+                            </valItem>
+                            <valItem ident="BT8">
+                                <gloss>Block text "Numbering"</gloss>
+                            </valItem>
+                            <valItem ident="BT9">
+                                <gloss>Block text "MusicNotation"</gloss>
+                            </valItem>
+                            <valItem ident="BT10">
+                                <gloss>Block text "RunningTitle"</gloss>
+                            </valItem>
+                            <valItem ident="BT11">
+                                <gloss>Block text "Seal"</gloss>
+                            </valItem>
+                            <valItem ident="BT12">
+                                <gloss>Block text "Signatures"</gloss>
+                            </valItem>
+                            <valItem ident="BT13">
+                                <gloss>Block text "Stamp"</gloss>
+                            </valItem>
+                            <valItem ident="BT14">
+                                <gloss>Block text "Table"</gloss>
+                            </valItem>
+                        </valList>
+                    </attDef>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="fw">
+                <content>
+                    <elementRef key="lb" minOccurs="1" maxOccurs="unbounded"/>
+                </content>
+                <attList>
+                    <attDef ident="facs" mode="change" usage="req"/>
+                    <attDef ident="type" mode="change" usage="req">
+                        <valList mode="add" type="closed">
+                            <valItem ident="#BT1">
+                                <gloss>Block text "Title"</gloss>
+                            </valItem>
+                            <valItem ident="#BT2">
+                                <gloss>Block text "Main"</gloss>
+                            </valItem>
+                            <valItem ident="#BT3">
+                                <gloss>Block text "Damage"</gloss>
+                            </valItem>
+                            <valItem ident="#BT4">
+                                <gloss>Block text "Decoration"</gloss>
+                            </valItem>
+                            <valItem ident="#BT5">
+                                <gloss>Block text "DropCapital"</gloss>
+                            </valItem>
+                            <valItem ident="#BT6">
+                                <gloss>Block text "Figure"</gloss>
+                            </valItem>
+                            <valItem ident="#BT7">
+                                <gloss>Block text "Margin"</gloss>
+                            </valItem>
+                            <valItem ident="#BT8">
+                                <gloss>Block text "Numbering"</gloss>
+                            </valItem>
+                            <valItem ident="#BT9">
+                                <gloss>Block text "MusicNotation"</gloss>
+                            </valItem>
+                            <valItem ident="#BT10">
+                                <gloss>Block text "RunningTitle"</gloss>
+                            </valItem>
+                            <valItem ident="#BT11">
+                                <gloss>Block text "Seal"</gloss>
+                            </valItem>
+                            <valItem ident="#BT12">
+                                <gloss>Block text "Signatures"</gloss>
+                            </valItem>
+                            <valItem ident="#BT13">
+                                <gloss>Block text "Stamp"</gloss>
+                            </valItem>
+                            <valItem ident="#BT14">
+                                <gloss>Block text "Table"</gloss>
+                            </valItem>
+                        </valList>
+                    </attDef>
+                </attList>
+            </elementSpec>
+
+            <elementSpec ident="lb">
+                <attList>
+                    <attDef ident="facs" mode="change" usage="rec"/>
+                    <attDef ident="break" mode="change" usage="rec">
+                        <valList>
+                            <valItem ident="no"/>
+                        </valList>
+                    </attDef>
+                    <attDef ident="type" mode="change" usage="rec">
+                        <valList mode="add" type="closed">
+                            <valItem ident="#LT1">
+                                <gloss>Line text "Default"</gloss>
+                            </valItem>
+                            <valItem ident="#LT2">
+                                <gloss>Line text "DropCapitalLine"</gloss>
+                            </valItem>
+                            <valItem ident="#LT3">
+                                <gloss>Line text "Interlinear"</gloss>
+                            </valItem>
+                            <valItem ident="#LT4">
+                                <gloss>Line text "MusicLine"</gloss>
+                            </valItem>
+                            <valItem ident="#LT5">
+                                <gloss>Line text "Rubric"</gloss>
+                            </valItem>
+                        </valList>
+                    </attDef>
+                    <attDef ident="rend" mode="change" usage="rec">
+                        <valList>
+                            <valItem ident="¬"/>
+                        </valList>
+                    </attDef>
+                </attList>
+            </elementSpec>
+            
+            <classSpec ident="att.global.linking" type="atts" mode="change">
+                <attList>
+                    <attDef ident="synch" mode="delete"/>
+                    <attDef ident="sameAs" mode="delete"/>
+                    <attDef ident="copyOf" mode="delete"/>
+                    <attDef ident="next" mode="delete"/>
+                    <attDef ident="prev" mode="delete"/>
+                    <attDef ident="exclude" mode="delete"/>
+                    <attDef ident="select" mode="delete"/>
+                </attList>
+            </classSpec>
+            
+            <classSpec ident="att.global" type="atts" mode="change">
+                <attList>
+                    <attDef ident="xml:lang" mode="delete"/>
+                    <attDef ident="xml:base" mode="delete"/>
+                    <attDef ident="xml:space" mode="delete"/>
+                </attList>
+            </classSpec>
+            
+            <classSpec ident="att.measurement" type="atts" mode="change">
+                <attList>
+                    <attDef ident="commodity" mode="delete"/>
+                    <attDef ident="unitRef" mode="delete"/>
+                </attList>
+            </classSpec>
+            
+            <classSpec ident="att.canonical" type="atts" mode="change">
+                <attList>
+                    <attDef ident="key" mode="delete"/>
+                    <attDef ident="ref" mode="change">
+                        <datatype>
+                            <dataRef name="string" restriction="isni.*|orcid.*|geonames.*|None"/>
+                        </datatype>
+                    </attDef>
+                </attList>
+            </classSpec>
+                       
+            <classSpec ident="att.global.rendition" type="atts" mode="change">
+                <attList>
+                    <attDef ident="style" mode="delete"/>
+                    <attDef ident="rendition" mode="delete"/>
+                </attList>
+            </classSpec>
+            
+            <classSpec ident="att.datable" type="atts" mode="change">
+                <attList>
+                    <attDef ident="calendar" mode="delete"/>
+                    <attDef ident="period" mode="delete"/>
+                </attList>
+            </classSpec>
+            
+            <classSpec ident="att.naming" type="atts" mode="change">
+                <attList>
+                    <attDef ident="role" mode="delete"/>
+                    <attDef ident="nymRef" mode="delete"/>
+                </attList>
+            </classSpec>
+            
+            <classSpec ident="att.interpLike" type="atts" mode="change">
+                <attList>
+                    <attDef ident="inst" mode="delete"/>
+                </attList>
+            </classSpec>
+            
+            <classSpec ident="att.coordinated" type="atts" mode="change">
+                <attList>
+                    <attDef ident="start" mode="delete"/>
+                    <attDef ident="ulx" mode="delete"/>
+                    <attDef ident="uly" mode="delete"/>
+                    <attDef ident="lrx" mode="delete"/>
+                    <attDef ident="lry" mode="delete"/>
+                    <attDef ident="points" mode="change">
+                        <datatype>
+                            <dataRef key="teidata.pointer"/>
+                        </datatype>
+                    </attDef>
+                </attList>
+            </classSpec>
+            
+            <classSpec ident="att.global.change" type="atts" mode="delete"/>
+            <classSpec ident="att.datable.custom" type="atts" mode="delete"/>
+            <classSpec ident="att.datable.iso" type="atts" mode="delete"/>
+        </body>
+    </text>
+</TEI>

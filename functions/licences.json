@@ -1,0 +1,28 @@
+{
+  "licenses": {
+    "cc by": {
+      "status": "restricted",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "cc by-sa": {
+      "status": "restricted",
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "cc by-nb": {
+      "status": "restricted",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/"
+    },
+    "cc by-nc": {
+      "status": "restricted",
+      "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    "cc by-nc-sa": {
+      "status": "restricted",
+      "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "cc by-nc-nd": {
+      "status": "restricted",
+      "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    }
+  }
+}
