@@ -40,6 +40,44 @@ The directory ``functions`` contains several python files used in ``alto4_into_T
 In ``ODD`` directory can be found an ODD based on the work of Alexandre Bartz and Simon Gabay, and especially the first of three 
 levels of transcription in XML-TEI (_i.e._ [E-ditiones/ODD17](https://github.com/e-ditiones/ODD17)).
 
+## Installation
+### Create a virtul environment (Linux-Ubuntu)
+We need to create a virtual environment in which we will be able to use
+ Python 3.6.
+
+To do so, in a terminal, we need to type the following command: 
+
+```shell
+sudo apt-get install python3 libfreetype6-dev python3-pip python3-virtualenv
+```
+
+Then choose a directory where you want register the app and from where you 
+will be able to use it. 
+
+In that repository, we need to clone <i>transformationTEI17</i> repository.
+
+This is from this directory that you need to type the following command to 
+create the virtual environment :
+ 
+```shell
+virtualenv ~/.transformationTEI17 -p python3
+```
+Then, we need to type the following command:
+```shell
+source ~/.transformationTEI17/bin/activate
+```
+This previous command is mandatory to activate the app.
+
+### Packages' installation
+In order for this app to be used, we need to install several python packages. 
+They are in `requirements.txt` file. You just need to use this command in the
+new virtual environment:
+``shell
+pip install -r requirements.txt
+```
+
+This command is for a single use.
+
 ## Explanations about transformation's script
 
 To use this script, you first need to prepare some data on eScriptorium. This script works with IIIF digitization of 17<sup>th</sup>
@@ -96,7 +134,7 @@ Claire Jahan : claire.jahan[at]chartes.psl.eu
 Simon Gabay : Simon.Gabay[at]unige.ch
 
 ## Cite this dataset
-Claire Jahan and Simon Gabay, _XSL transformation pipeline for XML-ALTO4 files from eScriptorium_, 2021, Paris: ENS Paris,  https://github.com/Heresta/datasetsOCRSegmenter17.
+Claire Jahan and Simon Gabay, _Transformation pipeline for XML-ALTO4 files from eScriptorium_, 2021, Paris: ENS Paris,  https://github.com/Heresta/datasetsOCRSegmenter17.
 
 ## Licence
 Data is CC-BY, except images which come from Gallica (cf. [conditions d'utilisation](https://gallica.bnf.fr/edit/und/conditions-dutilisation-des-contenus-de-gallica)).
