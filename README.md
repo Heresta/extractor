@@ -74,7 +74,7 @@ They are in `requirements.txt` file. You just need to use this command in the
 new virtual environment:
 ``shell
 pip install -r requirements.txt
-```
+``
 
 This command is for a single use.
 
