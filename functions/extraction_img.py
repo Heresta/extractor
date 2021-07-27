@@ -30,18 +30,16 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
     p = ET.SubElement(sourceDesc, "p")
     p.text = "Gallica"
     facsimile = ET.SubElement(root, "facsimile")
-    facsimile.attrib["{http://www.w3.org/XML/1998/namespace}id"] = racine[1].attrib['{http://www.' \
-                                                                                          'w3.org/XML/1998/namespace}id']
+    facsimile.attrib["corresp"] = "#" + racine[1].attrib['{http://www.w3.org/XML/1998/namespace}id']
     facsimile.attrib["source"] = racine[1].attrib["source"]
-     # on veut récupérer Decoration (BT4) et DropCapital (BT5) et Figure (BT6)
+     # on veut récupérer Decoration (BT4) et DropCapital (BT5)
       # parser le fichier dans l'output
       # aller dans TEI/facsimile
       # boucle for : pour chaque surface
     for surfaceGrp in racine[1]:
       # <listGrp>
         surfacegrp = ET.SubElement(facsimile, "surfaceGrp")
-        surfacegrp.attrib["{http://www.w3.org/XML/1998/namespace}id"] = surfaceGrp.attrib['{http://www.' \
-                                                                                          'w3.org/XML/1998/namespace}id']
+        surfacegrp.attrib["corresp"] = "#" + surfaceGrp.attrib['{http://www.w3.org/XML/1998/namespace}id']
         surfacegrp.attrib["type"] = surfaceGrp.attrib['type']
         for surface in surfaceGrp:
             if surface.attrib['corresp'] == "#BT4":
