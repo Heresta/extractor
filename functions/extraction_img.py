@@ -42,7 +42,7 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
         surfacegrp = ET.SubElement(facsimile, "surfaceGrp")
         surfacegrp.attrib["{http://www.w3.org/XML/1998/namespace}id"] = surfaceGrp.attrib['{http://www.' \
                                                                                           'w3.org/XML/1998/namespace}id']
-        surfacegrp.attrib["type"] = surfaceGrp.attrib['page']
+        surfacegrp.attrib["type"] = surfaceGrp.attrib['type']
         for surface in surfaceGrp:
             if surface.attrib['corresp'] == "#BT4":
        # <list type="Decoration">
