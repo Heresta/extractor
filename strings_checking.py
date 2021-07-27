@@ -52,11 +52,24 @@ def check_strings(dossier):
                                                                 i)
                                                 final += propre
                                             else:
-                                                final +=i
-        """with open(dossier + directory, "wb") as f:
-            f.write(bytes(final, encoding="utf-8"))"""
-
+                                                final += i
+                                with open(dossier + directory, "wb") as f:
+                                    f.write(bytes(final, encoding="utf-8"))
+    for directory in os.listdir(dossier):
+        with open(dossier + directory, "r") as f:
+            file = f.read()
+            if "</alto><alto" in file:
+                propre = re.sub("</alto><alto(.)*", "</alto>", file)
+                with open(dossier + directory, "wb") as f:
+                    f.write(bytes(propre, encoding="utf-8"))
+    for directory in os.listdir(dossier):
+        file = ET.parse(dossier + directory)
+        root = file.getroot()
+        ET.indent(root)
+        with open(dossier + directory, "wb") as f:
+            f.write(ET.tostring(root, encoding="utf-8"))
 
 
 if __name__ == "__main__":
     check_strings()
+
