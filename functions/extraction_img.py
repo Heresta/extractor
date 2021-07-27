@@ -67,5 +67,5 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
     body = ET.SubElement(text, "body")
     ET.SubElement(body, "p")
     with open(dossier_resultat_transformation + 'extration_img.xml', 'wb') as f:
-        f.write(ET.tostring(root))
+        f.write(ET.tostring(root, encoding='utf-8'))
 
