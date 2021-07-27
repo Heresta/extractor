@@ -30,7 +30,10 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
     p = ET.SubElement(sourceDesc, "p")
     p.text = "Gallica"
     facsimile = ET.SubElement(root, "facsimile")
-     # on veut récupérer Decoration (BT4) et DropCapital (BT5)
+    facsimile.attrib["{http://www.w3.org/XML/1998/namespace}id"] = racine[1].attrib['{http://www.' \
+                                                                                          'w3.org/XML/1998/namespace}id']
+    facsimile.attrib["source"] = racine[1].attrib["source"]
+     # on veut récupérer Decoration (BT4) et DropCapital (BT5) et Figure (BT6)
       # parser le fichier dans l'output
       # aller dans TEI/facsimile
       # boucle for : pour chaque surface
@@ -39,26 +42,30 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
         surfacegrp = ET.SubElement(facsimile, "surfaceGrp")
         surfacegrp.attrib["{http://www.w3.org/XML/1998/namespace}id"] = surfaceGrp.attrib['{http://www.' \
                                                                                           'w3.org/XML/1998/namespace}id']
+        surfacegrp.attrib["type"] = surfaceGrp.attrib['page']
         for surface in surfaceGrp:
-            print(surface.attrib['corresp'])
-       # if surfaceGrp/@type = BT4
             if surface.attrib['corresp'] == "#BT4":
        # <list type="Decoration">
                 surfaceimg = ET.SubElement(surfacegrp, "surface")
-                surfaceimg.set("type", "Decoration")
-         # <item>value-of @source</item>
-                figure = ET.SubElement(surfaceimg, "figure")
-                figure.text = surface.attrib['source']
-       # elif surfaceGrp/@type = BT5
+                surfaceimg.set("type", "decoration")
+                surfaceimg.set("corresp", "#" + surface.attrib['{http://www.w3.org/XML/1998/namespace}id'])
+                surfaceimg.set("facs", surface.attrib['source'])
             elif surface.attrib['corresp'] == "#BT5":
        # <list type="DropCapital">
                 surfaceimg = ET.SubElement(surfacegrp, "surface")
-                surfaceimg.set("type", "DropCapital")
-         # <item>value-of @source</item>
-                figure = ET.SubElement(surfaceimg, "figure")
-                figure.text = surface.attrib['source']
+                surfaceimg.set("type", "dropcapital")
+                surfaceimg.set("corresp", "#" + surface.attrib['{http://www.w3.org/XML/1998/namespace}id'])
+                surfaceimg.set("facs", surface.attrib['source'])
+            elif surface.attrib['corresp'] == "BT6":
+        # <list type="Figure">
+                surfaceimg = ET.SubElement(surfacegrp, "surface")
+                surfaceimg.set("type", "figure")
+                surfaceimg.set("corresp", "#" + surface.attrib['{http://www.w3.org/XML/1998/namespace}id'])
+                surfaceimg.set("facs", surface.attrib['source'])
+
     text = ET.SubElement(root, "text")
     body = ET.SubElement(text, "body")
     ET.SubElement(body, "p")
     with open(dossier_resultat_transformation + 'extration_img.xml', 'wb') as f:
         f.write(ET.tostring(root))
+
