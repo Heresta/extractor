@@ -24,6 +24,7 @@ Python script for transformation ALTO4 files in XML-TEI files depending on a spe
 │           └── ODD.rng
 ├── alto4_into_TEI.py
 ├── strings_checking.py
+├── count_illustration.py
 └── README.md
 
 ```
@@ -39,6 +40,9 @@ The directory ``functions`` contains several python files used in ``alto4_into_T
 
 In ``ODD`` directory can be found an ODD based on the work of Alexandre Bartz and Simon Gabay, and especially the first of three 
 levels of transcription in XML-TEI (_i.e._ [E-ditiones/ODD17](https://github.com/e-ditiones/ODD17)).
+
+``count_illustration.py`` is a script to count pages, decorations, dropcapitals and figures after TEI transformation. It has to be used on 
+`extrated_img.xml` and the path to this file has to be indicated directly into the code.
 
 ## Installation
 ### Create a virtul environment (Linux-Ubuntu)
