@@ -1,4 +1,5 @@
 from lxml import etree as ET
+from count_illustration import count_illu
 
 
 def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
@@ -67,3 +68,17 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
     with open(dossier_resultat_transformation + 'extration_img.xml', 'wb') as f:
         f.write(ET.tostring(root, encoding='utf-8'))
 
+    count_illu(dossier_resultat_transformation + 'extration_img.xml')
+
+    file = ET.parse(dossier_resultat_transformation + 'extration_img.xml')
+    root = file.getroot()
+    strings = ET.tostring(root, encoding='unicode')
+    strings = strings.split("\n")
+    final = ""
+    for i in strings:
+        if 'type="page"/>' in i:
+            pass
+        else:
+            final += i
+    with open(dossier_resultat_transformation + 'extration_img.xml', 'wb') as f:
+        f.write(bytes(final, encoding="utf-8"))
