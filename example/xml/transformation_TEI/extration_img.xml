@@ -1,0 +1,216 @@
+<TEI id="BrécourtLa1660">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>La Feinte Mort de Jodelet, comédie</title>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>Claire_Jahan_0000-0001-7268-9706</publisher>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Gallica</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <facsimile corresp="#BrécourtLa1660" source="https://gallica.bnf.fr/ark:/12148/bpt6k1090150w">
+        <surfaceGrp corresp="#BrécourtLa1660_0001" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0001_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0001/211,946,451,246/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0001_BT4_5"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0001/681,834,69,28/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0002" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0003" type="page">
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0003_BT5_1"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0003/0,762,192,186/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0003_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0003/0,246,1,2/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0003_BT4_5"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0003/0,305,1,2/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0003_BT4_6"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0003/3,182,782,220/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0003_BT4_7"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0003/757,1634,28,5/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0004" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0005" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0006" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0007" type="page">
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0007_BT5_1"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0007/11,676,103,137/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0007_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0007/0,311,1,2/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0007_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0007/7,164,731,169/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0008" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0009" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0010" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0011" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0012" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0012_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0012/276,147,743,101/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0013" type="page">
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0013_BT5_1"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0013/29,1093,146,140/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0013_BT4_5"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0013/29,178,756,196/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0014" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0015" type="page">
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0015_BT5_1"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0015/28,651,54,104/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0015_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0015/35,1617,633,10/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0015_BT4_5"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0015/35,223,762,140/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0016" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0017" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0017_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0017/35,1611,328,4/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0017_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0017/459,1599,397,22/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0018" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0018_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0018/488,1246,268,203/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0019" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0019_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0019/17,223,762,128/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0019_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0019/105,1617,680,16/full/0/native"/>
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0019_BT5_7"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0019/25,597,70,99/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0020" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0020_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0020/117,1622,81,40/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0020_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0020/435,1664,350,16/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0020_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0020/475,819,368,309/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0021" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0021_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0021/17,229,757,134/full/0/native"/>
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0021_BT5_5"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0021/347,627,101,93/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0022" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0023" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0024" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0024_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0024/270,99,128,5/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0025" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0025_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0025/29,1605,821,16/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0026" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0027" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0028" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0028_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0028/477,985,393,309/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0029" type="page">
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0029_BT5_1"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0029/11,684,110,88/full/0/native"/>
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0029_BT5_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0029/587,335,10,4/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0029_BT4_5"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0029/15,260,764,127/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0030" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0031" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0032" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0033" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0033_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0033/52,1628,733,16/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0034" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0035" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0036" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0037" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0038" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0039" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0039_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0039/270,917,330,298/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0040" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0040_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0040/222,208,794,144/full/0/native"/>
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0040_BT5_5"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0040/227,542,75,100/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0041" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0041_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0041/88,1628,216,11/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0041_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0041/370,1622,474,11/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0042" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0043" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0043_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0043/775,1752,69,4/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0043_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0043/58,1622,792,11/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0044" type="page">
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0044_BT5_1"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0044/311,879,106,104/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0045" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0045_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0045/282,1117,228,186/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0046" type="page">
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0046_BT5_1"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0046/528,805,69,22/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0046_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0046/256,223,777,135/full/0/native"/>
+            <surface type="dropcapital" corresp="#BrécourtLa1660_0046_BT5_6"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0046/518,751,104,106/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0047" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0048" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0049" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0049_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0049/29,1611,16,22/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0049_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0049/300,1617,532,33/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0050" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0051" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0051_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0051/35,1611,34,10/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0051_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0051/247,1599,597,45/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0052" type="page">
+            <surface type="decoration" corresp="#BrécourtLa1660_0052_BT4_2"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0052/453,1746,250,10/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0052_BT4_3"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0052/129,1746,16,10/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0052_BT4_4"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0052/400,1752,45,4/full/0/native"/>
+            <surface type="decoration" corresp="#BrécourtLa1660_0052_BT4_5"
+                     facs="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1090150w/f0052/135,1664,833,45/full/0/native"/>
+        </surfaceGrp>
+        <surfaceGrp corresp="#BrécourtLa1660_0053" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0054" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0055" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0056" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0057" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0058" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0059" type="page"/>
+        <surfaceGrp corresp="#BrécourtLa1660_0060" type="page"/>
+    </facsimile>
+    <text>
+        <body>
+            <p/>
+        </body>
+    </text>
+</TEI>
