@@ -50,6 +50,7 @@ def recuperation_donnees_manifest(manifest):
             # creation de l'id du facsimile
             id_facsimile = auteur_nom + titre.split(' ')[0] + annee
             id_facsimile = id_facsimile.replace(" ", "")
+            id_facsimile = id_facsimile.replace(",", "")
             # récupération de la notice de catalogue de l'ouvrage
             if manifestjson["metadata"][9]["value"].startswith("Notice du catalogue :"):
                 notice_cat = manifestjson["metadata"][9]["value"][22:]
