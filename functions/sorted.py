@@ -10,7 +10,7 @@ def sortchildrenby(dossier_resultat_transformation, fichier_origine):
     :param fichier_origine: str
         Path of the file to sort
     """
-    with open(dossier_resultat_transformation + "output.xml", "wb") as f:
+    with open(dossier_resultat_transformation + id_facsimile + "_" + ark + ".xml", "wb") as f:
         root = ET.Element("{http://www.tei-c.org/ns/1.0}TEI")
         file = ET.parse(fichier_origine)
         root11 = file.getroot()

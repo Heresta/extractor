@@ -1,7 +1,6 @@
 from lxml import etree as ET
 from functions.sorted import sortchildrenby
 from functions.count_words import count_words
-#from functions.validator_alto import test
 import errno
 import os
 import shutil
@@ -124,6 +123,7 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
 
     liste_fichier_img = []
     for fichier in os.listdir(chemin_img):
+        liste_fichier_img.append(fichier)
         shutil.copyfile(chemin_img + fichier, intermediaire_copie_img + fichier)
 
     for fichier in os.listdir(intermediaire_copie_img):
@@ -748,12 +748,13 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
                                    str(n))
                         figure.set("hand", "à remplir")
 
-    with open(intermediaire + "output.xml", "wb") as f:
+    with open(intermediaire + id_facsimile + "_" + ark + ".xml", "wb") as f:
         f.write(ET.tostring(root, encoding="utf-8"))
 
-    sortchildrenby(dossier_resultat_transformation, intermediaire + "output.xml")
+    sortchildrenby(dossier_resultat_transformation, intermediaire + id_facsimile + "_" + ark + ".xml")
 
     # Finalisation de la transformation
     shutil.rmtree(intermediaire)
 
-    return dossier_resultat_transformation + "output.xml"
+    return dossier_resultat_transformation + id_facsimile + "_" + ark + ".xml"
+
