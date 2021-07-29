@@ -1,5 +1,5 @@
 from lxml import etree as ET
-from count_illustration import count_illu
+from .count_illustration import count_illu
 
 
 def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
