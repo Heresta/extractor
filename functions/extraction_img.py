@@ -80,5 +80,5 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
             pass
         else:
             final += i
-    with open(dossier_resultat_transformation + 'extration_img.xml', 'wb') as f:
+    with open(dossier_resultat_transformation + 'extraction_img.xml', 'wb') as f:
         f.write(bytes(final, encoding="utf-8"))
