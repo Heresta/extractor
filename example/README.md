@@ -28,8 +28,8 @@ This is an example of result that this program gives.
 In `img` directory there are all images renamed to be more easily linked with corresponding xml file.
 
 In `xml` directory there are two other directories : `ALTOS` contains all xml files renamed to be more easily linked with 
-corresponding image file and `TEI` contains two files that are `extration_img.xml` and `ouput.xml`.
+corresponding image file and `TEI` contains two files that are `author_title_date_ID_decorations.xml` and `author_title_date_ID.xml`.
 
-`output.xml` is a TEI file that contains all ALTO files as described in main README.
+`author_title_date_ID.xml` is a TEI file that contains all ALTO files as described in main README.
 
-`extration_img.xml` is an optional TEI file that contains all information about images from facsimile tag in TEI output file.
+`author_title_date_ID_decorations.xml` is an optional TEI file that contains all information about images from facsimile tag in TEI output file.
