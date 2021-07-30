@@ -60,8 +60,8 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
     intermediaire_copie_img = "./intermediaire/copie_fichier_img/"
 
     # récupérer le dossier des fichiers xml à renommer et à transformer et le dossier résultat
-    dossier_resultat_standardisation = "./" + id_facsimile + "/xml/standardisation/"
-    dossier_resultat_transformation = "./" + id_facsimile + "/xml/transformation_TEI/"
+    dossier_resultat_standardisation = "./" + id_facsimile + "/xml/ALTOS/"
+    dossier_resultat_transformation = "./" + id_facsimile + "/xml/TEI/"
 
     # récupérer le dossier des images à renommer
     dossier_resultat_img = "./" + id_facsimile + "/img/"
@@ -194,7 +194,7 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
         fileName = ET.SubElement(sourceImageInformation, "fileName")
         fileName.text = texte[1]
         fileIdentifier = ET.SubElement(sourceImageInformation, "fileIdentifier")
-        fileIdentifier.text = texte[2]
+        fileIdentifier.text = fichier[:-3] + "jpg"
         Tags = ET.SubElement(racine, "Tags")
         for tag in tag_label["textblock"]:
             OtherTag = ET.SubElement(Tags, "OtherTag")

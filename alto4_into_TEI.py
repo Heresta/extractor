@@ -3,7 +3,7 @@ import os
 import errno
 from functions.recuperation_donnees_SPARQL import recup_data_sparql
 from functions.Transkribus_ABBYY_native import tes
-from functions.récupération_données_manifest import recuperation_donnees_manifest
+from functions.recuperation_donnees_manifest import recuperation_donnees_manifest
 from functions.extraction_img import extraction_image
 from functions.creation_intermediaire import creation_interm
 from functions.cleaned_file import clean_file
@@ -71,7 +71,7 @@ def transformation(ark, editeur, edition, url_edition, segmentationTranscription
 
     # fonction de récupération de la liste des imprimeurs
     if extraction_img:
-        extraction_image(doc_final, titre, editeur, id_facsimile)
+        extraction_image(doc_final, titre, editeur, id_facsimile, ark)
         clean_file(doc_final)
     else:
         clean_file(doc_final)

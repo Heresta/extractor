@@ -48,7 +48,14 @@ def recuperation_donnees_manifest(manifest):
             # récupération du nom de famille de l'auteur de l'ouvrage
             auteur_nom = auteur.split(",")[0]
             # creation de l'id du facsimile
+            determinants = ["Le", "La", "Les", "Du", "De la", "Aux", "Au", "Un", "Une", "Des",
+                            "Mon", 'Ton', "Son", 'Notre', "Votre", "Leur", "Ma", "Ta", "Sa",
+                            "Mes", "Tes", "Ses", "Nos", "Vos", "Leurs", "Vostre", 'Nostre',
+                            "Ce", "Cet", "Cette", "Ces", "Chaque", "Quelques", "Plusieurs"]
             id_facsimile = auteur_nom + titre.split(' ')[0] + annee
+            for determinant in determinants:
+                if titre.split(' ')[0] == determinant:
+                    id_facsimile = auteur_nom + titre.split(' ')[1].capitalize() + annee
             id_facsimile = id_facsimile.replace(" ", "")
             id_facsimile = id_facsimile.replace(",", "")
             # récupération de la notice de catalogue de l'ouvrage

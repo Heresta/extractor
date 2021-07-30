@@ -11,6 +11,10 @@ def check_strings(dossier):
         root = file.getroot()
         strings = ET.tostring(root, encoding='unicode')
         strings = strings.split("\n")
+        dropcapital = root[1][4].get("ID")
+        numbering = root[1][8].get("ID")
+        runningtitle = root[1][9].get("ID")
+        signatures = root[1][11].get("ID")
         layout = root[2]
         final = ""
         for page in layout:
@@ -33,6 +37,24 @@ def check_strings(dossier):
                                                                                                "supprimer et ajouter "
                                                                                                "ce qu'il contient dans"
                                                                                                "le bon block.")
+                    elif int(textblock.get('WIDTH')) * int(textblock.get("HEIGHT")) < 101:
+                        print("Le block " + textblock.get("ID") + " du fichier " + directory + "est à effacer, puisque "
+                                                                                               "trop petit.")
+                for textblock in printspace:
+                    if textblock.get("ID") == dropcapital:
+                        if textblock[1] == "{http://www.loc.gov/standards/alto/ns-v4#}TextLine":
+                            pass
+                        else:
+                            print("Le block " + textblock.get("ID") + " du fichier " + directory + "est à remplir d'une"
+                                                                                                   " textline correspon"
+                                                                                                   "dante")
+                    elif textblock.get("ID") == numbering:
+                        if textblock[1] == "{http://www.loc.gov/standards/alto/ns-v4#}TextLine":
+                            pass
+                        else:
+                            print("Le block " + textblock.get("ID") + " du fichier " + directory + "est à remplir d'une"
+                                                                                                   " textline correspon"
+                                                                                                   "dante")
                     for textline in textblock:
                         if textline.tag == "{http://www.loc.gov/standards/alto/ns-v4#}TextLine":
                             if textline.get("TAGREFS"):

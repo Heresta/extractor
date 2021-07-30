@@ -2,7 +2,7 @@ from lxml import etree as ET
 from .count_illustration import count_illu
 
 
-def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
+def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile, ark):
     """
     Creates a TEI file with a list of all illustrations in a book according to
     information in facsimile tag in another TEI file.
@@ -12,8 +12,10 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
         Title of the book
     :param id_facsimile: str
         Id of the book
+    :param ark: str
+        ark of the book
     """
-    dossier_resultat_transformation = "./" + id_facsimile + "/xml/transformation_TEI/"
+    dossier_resultat_transformation = "./" + id_facsimile + "/xml/TEI/"
     document_final = ET.parse(doc_final)
     racine = document_final.getroot()
     # <grpList>
@@ -80,5 +82,5 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
             pass
         else:
             final += i
-    with open(dossier_resultat_transformation + 'extraction_img.xml', 'wb') as f:
+    with open(dossier_resultat_transformation + id_facisimile + "_" + ark + '_decoration.xml', 'wb') as f:
         f.write(bytes(final, encoding="utf-8"))
