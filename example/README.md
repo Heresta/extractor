@@ -5,15 +5,18 @@ This is an example of result that this program gives.
 ## Structure
 
 ```
-├── img
-│    └── example.jpg
-│ 
 ├── xml
-│     ├── standardisation
-│     │     └── example.xml
-│     └── transformation_TEI
-│           ├── extration_img.xml
-│           └── output.xml
+│     ├── ALTOs
+│     │      ├──author_title_date_ID_folio.xml
+│     │      ├──…
+│     │      └── author_title_date_ID_folio.xml
+│     └── TEI
+│            ├── author_title_date_ID.xml
+│            └── author_title_date_ID_decorations.xml
+├── img
+│     ├──author_title_date_ID_folio.jpg
+│     ├──…
+│     └── author_title_date_ID_folio.jpg
 └── README.md
 
 ```
@@ -24,8 +27,8 @@ This is an example of result that this program gives.
 
 In `img` directory there are all images renamed to be more easily linked with corresponding xml file.
 
-In `xml` directory there are two other directories : `standardisation` contains all xml files renamed to be more easily linked with 
-corresponding image file and `transformation_TEI` contains two files that are `extration_img.xml` and `ouput.xml`.
+In `xml` directory there are two other directories : `ALTOS` contains all xml files renamed to be more easily linked with 
+corresponding image file and `TEI` contains two files that are `extration_img.xml` and `ouput.xml`.
 
 `output.xml` is a TEI file that contains all ALTO files as described in main README.
 
