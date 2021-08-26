@@ -1,6 +1,7 @@
 from lxml import etree as ET
 from functions.sorted import sortchildrenby
 from functions.count_words import count_words
+#from functions.validator_alto import test
 import errno
 import os
 import shutil
@@ -60,8 +61,8 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
     intermediaire_copie_img = "./intermediaire/copie_fichier_img/"
 
     # récupérer le dossier des fichiers xml à renommer et à transformer et le dossier résultat
-    dossier_resultat_standardisation = "./" + id_facsimile + "/xml/ALTOS/"
-    dossier_resultat_transformation = "./" + id_facsimile + "/xml/TEI/"
+    dossier_resultat_standardisation = "./" + id_facsimile + "/xml/standardisation/"
+    dossier_resultat_transformation = "./" + id_facsimile + "/xml/transformation_TEI/"
 
     # récupérer le dossier des images à renommer
     dossier_resultat_img = "./" + id_facsimile + "/img/"
@@ -129,12 +130,9 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
     for fichier in os.listdir(intermediaire_copie_img):
         for nom in liste_fichier_img:
             if nom == fichier:
-                if "_" in nom[:2]:
-                    propre = str(int(nom[:1]) + 1)
-                    extension = nom[-4:]
-                else:
-                    propre = str(int(nom[:2]) + 1)
-                    extension = nom[-4:]
+                num = nom.split("_")[0]
+                propre = str(int(num) + 1)
+                extension = nom[-4:]
                 os.rename(intermediaire_copie_img + fichier,
                           dossier_resultat_img + "gallica_" + ark + "_" + auteur_nom
                           + "_" + titre.replace("/", '') + "_" + annee + "_" + propre + extension)
@@ -151,10 +149,8 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
     for fichier in os.listdir(intermediaire_copie_xml):
         for nom in liste_fichier_xml:
             if nom == fichier:
-                if "_" in nom[:2]:
-                    propre = str(int(nom[:1]) + 1)
-                else:
-                    propre = str(int(nom[:2])+1)
+                numero = nom.split("_")[0]
+                propre = str(int(numero) + 1)
                 os.rename(intermediaire_copie_xml+fichier, intermediaire_post_copie+"gallica_"+ark+"_"+auteur_nom
                           + "_" + titre.replace("/", '') + "_" + annee + "_" + propre + ".xml")
 
@@ -193,8 +189,8 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
         sourceImageInformation = ET.SubElement(Description, "sourceImageInformation")
         fileName = ET.SubElement(sourceImageInformation, "fileName")
         fileName.text = texte[1]
-        fileIdentifier = ET.SubElement(sourceImageInformation, "fileIdentifier")
-        fileIdentifier.text = fichier[:-3] + "jpg"
+        #fileIdentifier = ET.SubElement(sourceImageInformation, "fileIdentifier")
+        #fileIdentifier.text = texte[2]
         Tags = ET.SubElement(racine, "Tags")
         for tag in tag_label["textblock"]:
             OtherTag = ET.SubElement(Tags, "OtherTag")
@@ -452,6 +448,7 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
         data = fichier.split("_")
         numero_folio_extension = data[-1]
         numero_folio = numero_folio_extension[0:-4]
+        #print(numero_folio)
         if len(numero_folio) == 1:
             numero_folio = "000" + numero_folio
         elif len(numero_folio) == 2:
@@ -751,10 +748,10 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
     with open(intermediaire + id_facsimile + "_" + ark + ".xml", "wb") as f:
         f.write(ET.tostring(root, encoding="utf-8"))
 
-    sortchildrenby(dossier_resultat_transformation, intermediaire + id_facsimile + "_" + ark + ".xml")
+    sortchildrenby(dossier_resultat_transformation, intermediaire + id_facsimile + "_" + ark + ".xml",
+                   id_facsimile, ark)
 
     # Finalisation de la transformation
     shutil.rmtree(intermediaire)
 
     return dossier_resultat_transformation + id_facsimile + "_" + ark + ".xml"
-

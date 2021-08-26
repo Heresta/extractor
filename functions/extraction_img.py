@@ -1,8 +1,10 @@
+import re
+
 from lxml import etree as ET
 from .count_illustration import count_illu
 
 
-def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile, ark):
+def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile):
     """
     Creates a TEI file with a list of all illustrations in a book according to
     information in facsimile tag in another TEI file.
@@ -12,10 +14,8 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile, ark):
         Title of the book
     :param id_facsimile: str
         Id of the book
-    :param ark: str
-        ark of the book
     """
-    dossier_resultat_transformation = "./" + id_facsimile + "/xml/TEI/"
+    dossier_resultat_transformation = "./" + id_facsimile + "/xml/transformation_TEI/"
     document_final = ET.parse(doc_final)
     racine = document_final.getroot()
     # <grpList>
@@ -75,12 +75,13 @@ def extraction_image(doc_final, titre, editeur_scientifique, id_facsimile, ark):
     file = ET.parse(dossier_resultat_transformation + 'extration_img.xml')
     root = file.getroot()
     strings = ET.tostring(root, encoding='unicode')
+    strings = re.sub("/>", "/>\n", strings)
+    strings = re.sub("</surfaceGrp>", "</surfaceGrp>\n", strings)
+    print(strings)
     strings = strings.split("\n")
     final = ""
     for i in strings:
-        if 'type="page"/>' in i:
-            pass
-        else:
+        if 'type="page"/>' not in i:
             final += i
-    with open(dossier_resultat_transformation + id_facisimile + "_" + ark + '_decoration.xml', 'wb') as f:
+    with open(dossier_resultat_transformation + 'extration_img.xml', 'wb') as f:
         f.write(bytes(final, encoding="utf-8"))
