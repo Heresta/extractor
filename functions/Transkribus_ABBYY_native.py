@@ -189,8 +189,8 @@ def tes(chemin, chemin_img, editeur_ORCID, edition, url_edition, availability, i
         sourceImageInformation = ET.SubElement(Description, "sourceImageInformation")
         fileName = ET.SubElement(sourceImageInformation, "fileName")
         fileName.text = texte[1]
-        #fileIdentifier = ET.SubElement(sourceImageInformation, "fileIdentifier")
-        #fileIdentifier.text = texte[2]
+        fileIdentifier = ET.SubElement(sourceImageInformation, "fileIdentifier")
+        fileIdentifier.text = texte[2]
         Tags = ET.SubElement(racine, "Tags")
         for tag in tag_label["textblock"]:
             OtherTag = ET.SubElement(Tags, "OtherTag")
