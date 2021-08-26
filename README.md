@@ -67,7 +67,7 @@ levels of transcription in XML-TEI (_i.e._ [E-ditiones/ODD17](https://github.com
 Copy those commands in a terminal.
 
 ```console
-git clone https://github.com/e-ditiones/extractor
+git clone https://github.com/Heresta/extractor
 cd extractor
 pip install virtualenv
 virtualenv env
